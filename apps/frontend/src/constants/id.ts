@@ -1,3 +1,5 @@
 export const ElementIds = {
-  'sendReqBtn': 'send-req-btn'
-}
+  sendReqBtn: "send-req-btn",
+  reqTable: "req-table",
+  reqTableDataRow: "req-table-data-row",
+};

@@ -1,4 +1,5 @@
 import type { HttpRequest } from "../types/http";
+
 import { Sockets } from "./sockets";
 
 class State extends EventTarget {
@@ -15,6 +16,11 @@ class State extends EventTarget {
 
   addRequest(req: HttpRequest) {
     this.httpRequests.push(req);
+    this.dispatchEvent(new Event("addRequest"));
+  }
+
+  getRequests() {
+    return this.httpRequests;
   }
 
   get isConnected() {

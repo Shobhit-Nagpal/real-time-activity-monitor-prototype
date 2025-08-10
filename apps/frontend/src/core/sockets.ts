@@ -1,3 +1,6 @@
+import type { HttpRequest } from "../types/http";
+import state from "./state";
+
 export class Sockets {
   private socket: WebSocket;
 
@@ -27,9 +30,12 @@ export class Sockets {
   }
 
   processMessage(message: any) {
-    console.log(message);
-    alert(message)
+    const payload = JSON.parse(message);
+    const messages = payload[0].messages;
+    console.log(messages[messages.length - 1].message);
+    const req = messages[messages.length - 1].message as HttpRequest;
     // Update the state here
+    state.addRequest(req);
   }
 
   disconnect() {
