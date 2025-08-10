@@ -1,4 +1,4 @@
-class Sockets {
+export class Sockets {
   private socket: WebSocket;
 
   constructor(url: string) {
@@ -28,6 +28,7 @@ class Sockets {
 
   processMessage(message: any) {
     console.log(message);
+    alert(message)
     // Update the state here
   }
 
@@ -35,7 +36,3 @@ class Sockets {
     this.socket.close();
   }
 }
-
-const ws = new Sockets("ws://localhost:3001");
-
-export default ws;

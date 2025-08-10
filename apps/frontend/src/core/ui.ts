@@ -1,7 +1,6 @@
 import { ElementIds } from "../constants/id";
 import { sendHttpRequest } from "../utils/request";
 import state from "./state";
-import ws from "./sockets";
 
 export class UI {
   private sendReqBtn!: HTMLElement;
@@ -16,6 +15,7 @@ export class UI {
   init() {
     this.sendReqBtn = document.getElementById(ElementIds["sendReqBtn"])!;
     console.log(this.sendReqBtn);
+    console.log("isConnected:", state.isConnected);
   }
 
   setupListeners() {

@@ -8,4 +8,3 @@ export async function initServices() {
     process.exit(1);
   }
 }
-

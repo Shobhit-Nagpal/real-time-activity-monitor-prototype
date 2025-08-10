@@ -1,13 +1,16 @@
 import type { HttpRequest } from "../types/http";
+import { Sockets } from "./sockets";
 
 class State extends EventTarget {
   private httpRequests: HttpRequest[];
   private _isConnected: boolean;
+  private ws: Sockets;
 
   constructor() {
     super();
     this.httpRequests = [];
     this._isConnected = false;
+    this.ws = new Sockets("ws://localhost:3001");
   }
 
   addRequest(req: HttpRequest) {
