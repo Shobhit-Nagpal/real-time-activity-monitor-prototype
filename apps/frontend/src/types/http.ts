@@ -1,21 +1,22 @@
 export type HttpRequest = {
+  id: string;
   method: string;
   baseUrl: string;
   body?: Record<string, any> | undefined;
-  cookies?: string; //object
-  fresh: string; //boolean
+  cookies?: object; //object
+  fresh: boolean; //boolean
   host: string;
   hostname: string;
   ip: string;
   ips: string[]; //Buffer
   originalUrl: string;
-  params?: string; //object
+  params?: object; //object
   path: string;
   protocol: string;
-  query?: string; //object
-  secure: string; //boolean
+  query?: object; //object
+  secure: boolean; //boolean
   signedCookies?: string; //object
-  stale: string; //boolean
+  stale: boolean; //boolean
   subdomains: string[]; //Buffer
-  xhr: string; //boolean
+  xhr: boolean; //boolean
 };

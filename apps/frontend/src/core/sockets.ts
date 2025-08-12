@@ -1,4 +1,5 @@
 import type { HttpRequest } from "../types/http";
+import { extractRequest } from "../utils/request";
 import state from "./state";
 
 export class Sockets {
@@ -21,7 +22,7 @@ export class Sockets {
 
     this.socket.onmessage = (e) => {
       let message = e.data;
-      this.processMessage(message);
+      this.processStream(message);
     };
 
     this.socket.onerror = () => {
@@ -29,14 +30,13 @@ export class Sockets {
     };
   }
 
-  processMessage(message: any) {
-    console.log(message)
-    const payload = JSON.parse(message);
+  processStream(stream: any) {
+    const payload = JSON.parse(stream);
     const messages = payload[0].messages;
-    console.log(messages[messages.length - 1].message);
-    const req = messages[messages.length - 1].message as HttpRequest;
-    // Update the state here
-    state.addRequest(req);
+    const id = messages[messages.length - 1].id;
+    const req = messages[messages.length - 1].message;
+    const newRequest = extractRequest(req, id);
+    state.addRequest(newRequest);
   }
 
   disconnect() {

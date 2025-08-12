@@ -23,7 +23,6 @@
 import { boolToString } from "./index.js";
 
 export function parseRequest(req) {
-  console.log("params:", req.params);
   const httpRequest = {
     method: req.method,
     baseUrl: req.baseUrl,
@@ -31,13 +30,13 @@ export function parseRequest(req) {
     host: req.host,
     hostname: req.hostname,
     ip: req.ip,
-    ips: Buffer.from(req.ips),
+    ips: JSON.stringify(req.ips),
     originalUrl: req.originalUrl,
     path: req.path,
     protocol: req.protocol,
     secure: boolToString(req.secure),
     stale: boolToString(req.stale),
-    subdomains: Buffer.from(req.subdomains),
+    subdomains: JSON.stringify(req.subdomains),
     xhr: boolToString(req.xhr),
   };
 

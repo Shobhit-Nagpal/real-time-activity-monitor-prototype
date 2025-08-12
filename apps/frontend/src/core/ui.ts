@@ -35,8 +35,8 @@ export class UI {
   renderTable() {
     this.reqTable.innerHTML = `
     <tr>
+      <th>ID</th>
       <th>Method</th>
-      <th>Base URL</th>
       <th>Host</th>
       <th>Hostname</th>
       <th>Fresh</th>
@@ -48,8 +48,8 @@ export class UI {
       .map((req) => 
     `
     <tr>
+      <td>${req.id}</td>
       <td>${req.method}</td>
-      <td>${req.baseUrl}</td>
       <td>${req.host}</td>
       <td>${req.hostname}</td>
       <td>${req.fresh}</td>
