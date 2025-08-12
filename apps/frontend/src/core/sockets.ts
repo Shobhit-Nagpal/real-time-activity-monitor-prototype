@@ -30,6 +30,7 @@ export class Sockets {
   }
 
   processMessage(message: any) {
+    console.log(message)
     const payload = JSON.parse(message);
     const messages = payload[0].messages;
     console.log(messages[messages.length - 1].message);

@@ -2,6 +2,7 @@ import express from "express";
 import { rootRouter } from "./routes/index.js";
 import { initServices } from "./services/index.js";
 import cors from "cors";
+import { monitor } from "./middleware/monitor.js";
 
 const PORT = 3000;
 
@@ -12,6 +13,7 @@ async function initServer() {
     await initServices();
 
     app.use(cors());
+    app.use(monitor());
     app.use("/", rootRouter);
 
     app.listen(PORT, () => {

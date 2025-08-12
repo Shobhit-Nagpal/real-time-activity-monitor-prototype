@@ -36,10 +36,28 @@ export class UI {
     this.reqTable.innerHTML = `
     <tr>
       <th>Method</th>
+      <th>Base URL</th>
+      <th>Host</th>
+      <th>Hostname</th>
+      <th>Fresh</th>
+      <th>IP</th>
+      <th>Original URL</th>
     </tr>
     ${state
       .getRequests()
-      .map((req) => `<tr><td>${req.method}</td></tr>`)
+      .map((req) => 
+    `
+    <tr>
+      <td>${req.method}</td>
+      <td>${req.baseUrl}</td>
+      <td>${req.host}</td>
+      <td>${req.hostname}</td>
+      <td>${req.fresh}</td>
+      <td>${req.ip}</td>
+      <td>${req.originalUrl}</td>
+    </tr>
+    `
+    )
       .join("")}
   `;
   }
